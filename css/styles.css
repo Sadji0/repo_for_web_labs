@@ -1,0 +1,40 @@
+.block h1 {
+    font-size: 40px;
+    color: rgb(168, 166, 50);
+}
+
+nav {
+    margin-top: 70px;
+    margin-left: 5%;
+}
+
+.menu a {
+    color: black;
+    text-align: center;
+    padding: 10px 40px;
+    font-size: 14px;
+}
+
+/* .menu .icon {
+    display: none; 
+}*/
+
+.line {
+    width: 60px;
+    height: 2px;
+    background: blue;
+    position: relative;
+    left: 2%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+div#About {
+    display: flex;
+    width: 100%;
+    /* padding: 120px 0 20px 0;  */
+}
