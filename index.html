@@ -2,61 +2,58 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Плавко Михаил - М33122</title>
+    
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header>
-        <img src="">
         <nav>
-            <div class="menu">
-                <a href="#">Главная</a>
-                <a href="#">Обо мне</a>
-                <a href="#">Резюме</a>
-                <a href="#">Портфолио</a>
-                <a href="#">Контакты</a>
-            </div>
+            <a href="#">Главная</a>
+            <a href="#">Обо мне</a>
+            <a href="#">Резюме</a>
+            <a href="#">Портфолио</a>
+            <a href="#">Контакты</a>
         </nav>
     </header>
     
-    
     <main>
-        <div class="block" id="About">
-            <div id="WhoAmI">
-                <div class="line"></div>
-                <h2>Кто Я?</h2>
-                <p>Текст</p>
-                <p>Еще Текст</p>
-            </div>
-            <div id="PersonalInfo">
-                <div class="line"></div>
-                <h2>Персональная Инфо?</h2>
-                <time>14:51</time>
-                <p>Текст</p>
-                <p>Еще Текст</p>
-            </div>
-            <div id="MyExpertise">
-                <div class="line"></div>
-                <h2>В чем я хорош?(Успехи)</h2>
-                <dl>
-                    <dt>HTML</dt>
-                    <dd>Язык гипертекстовой разметки</dd>
-                    <dt>CSS</dt>
-                    <dd>Каскадные таблицы стилей</dd>
-                    <dd>Язык для оформления HTML-документов</dd>
-                </dl>
-                <ul>
-                    <li>Программирование</li>
-                    <li>Проектная деятельность</li>
-                </ul>
-            </div>
-        </div>
+        <div class="bg-animation">
+            <section class="block" id="About">
+                <div class="container">
+                    <div class="mini_block" id="WhoAmI">
+                        <h2>Кто Я?</h2>
+                        <p>Текст</p>
+                        <p>Еще Текст</p>
+                    </div>
+                    <div class="mini_block" id="PersonalInfo">
+                        <h2>Персональная Инфо?</h2>
+                        <time>14:51</time>
+                        <p>Текст</p>
+                        <p>Еще Текст</p>
+                    </div>
+                    <div class="mini_block" id="MyExpertise">
+                        <h2>В чем я хорош?(Успехи)</h2>
+                        <dl>
+                            <dt>HTML</dt>
+                            <dd>Язык гипертекстовой разметки</dd>
+                            <dt>CSS</dt>
+                            <dd>Каскадные таблицы стилей</dd>
+                            <dd>Язык для оформления HTML-документов</dd>
+                        </dl>
+                        <ul>
+                            <li>Программирование</li>
+                            <li>Проектная деятельность</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
-        <div class="block" id="Animal">
-            <h1>Мое тотемное животное</h1>
-            <pre>
+            <section class="block" id="Animal">
+                <div class="container">
+                    <h2>Мое тотемное животное</h2>
+                    <pre>
            """---==____   ____==---"""
         """"---==='__  """  __`===---"""'
          """"--===(___=-_-=___)===--""""
@@ -82,35 +79,38 @@
                           \     "--"    /
                            \__        /'
                               ""---""'           
-            </pre>
-        </div>
+                    </pre>
+                </div>
+            </section>
 
-        <div class="block" id="Code">
-            <h1>Код за который мне не стыдно</h1>
-            <code>
-                public class HelloWorld {<br>
-                    public static void main(String[] args) {<br>
-                        System.out.println("Hello, World");<br>
-                    }<br>
-                }
-            </code>
+            <section class="block" id="Code">
+                <div class="container">
+                    <img src="images/image_01.jpg">
+                    <h2>Код за который мне не стыдно</h2>
+                    <pre><code>public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World");
+    }
+}
+                    </code></pre>
+                </div>
+            </section>
+
         </div>
     </main>
-    
 
     <footer>
-        <div class="block" id="C">
-            <h1>Любимая цитата</h1>
+        <section class="block" id="C">
+            <h2>Любимая цитата</h2>
             <blockquote>
                 Настоящее <sup>определяется</sup> будущим и <sub>создает</sub> прошлое
             </blockquote>
-        </div>
+        </section>
         
-        <div class="block" id="Formula">
-            <h1>Формула успеха</h1>
+        <section class="block" id="Formula">
+            <h2>Формула успеха</h2>
             <p><b>Еб*шь</b> на свою <strong>мечту</strong></p>
-        </div>
-        
+        </section>
     </footer>
 </body>
 </html>

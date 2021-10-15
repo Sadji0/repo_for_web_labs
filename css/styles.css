@@ -1,40 +1,134 @@
-.block h1 {
-    font-size: 40px;
-    color: rgb(168, 166, 50);
+/* Убираем внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+
+
+header {
+    background-color: rgb(225, 235, 235);
+    width: 100%;
+    padding: 10px 0;
 }
 
 nav {
-    margin-top: 70px;
-    margin-left: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
-.menu a {
-    color: black;
-    text-align: center;
-    padding: 10px 40px;
+nav a {
+    text-decoration: none;
     font-size: 14px;
+    color: rgb(0, 0, 0);
 }
 
-/* .menu .icon {
-    display: none; 
-}*/
-
-.line {
-    width: 60px;
-    height: 2px;
-    background: blue;
-    position: relative;
-    left: 2%;
+.mini_block {
+    width: 100%;
 }
 
-main {
+main, footer {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 100%; 
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-div#About {
-    display: flex;
-    width: 100%;
-    /* padding: 120px 0 20px 0;  */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
 }
+
+section#About .container{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding-top: 120px; 
+}
+
+header a:hover {
+    font-size: 20px;
+    font-style: unset;
+    color: rgb(36, 128, 24);
+    background-color: rgb(255, 220, 130);
+}
+
+footer {
+    background-color: rgb(190, 230, 255);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.bg-animation {
+    animation: bg-animation 25s ease-in-out infinite;
+    background-image: url(../images/back1.png); 
+    background-repeat: no-repeat;
+}
+ 
+@keyframes bg-animation {
+    0% {
+        background-size: 170%;
+        background-position: 50% 50%
+    }
+    20% {
+        background-size: 200%;
+        background-position: 0 50%;
+    }    
+    40% {
+        background-size: 160%;
+        background-position: 20% 80%;
+    }
+    60% {
+        background-size: 210%;
+        background-position: 60% 10%;
+    }
+    80% {
+        background-size: 160%;
+        background-position: 40% 70%;
+    }    
+    100% {
+        background-size: 170%;
+        background-position: 50% 50%
+    }
+}
+
+.block h2 {
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    text-shadow: 1px 1px 8px rgb(183, 0, 255);
+    text-decoration-line: underline;
+    padding-bottom: 10px;
+    opacity: 70%;
+}
+
+section#Code img {
+    width: 150px;
+    box-shadow: 5px 5px 10px 3px rgb(99, 99, 99);
+}
+
+section#Code img:hover {
+    animation: rot 2s ease-in-out infinite;
+}
+
+@keyframes rot {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
