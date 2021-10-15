@@ -111,7 +111,7 @@ footer {
     color: rgb(0, 0, 0);
     text-shadow: 1px 1px 8px rgb(183, 0, 255);
     text-decoration-line: underline;
-    padding-bottom: 10px;
+    padding: 10px 0;
     opacity: 70%;
 }
 
