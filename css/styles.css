@@ -83,6 +83,7 @@ footer {
     flex-direction: row;
     justify-content: space-around;
     padding-bottom: 1.3671875vw;
+    padding: 1vw 0;
 }
 
 .block h2 {
@@ -121,4 +122,23 @@ body {
 	100% {
 		background-position: 0% 50%;
 	}
+}
+
+@media screen and (max-width: 865px) {
+    /* тест */
+    /* body {
+        display: none;
+    } */
+
+    /* поработать с флексом */
+    #About .container{
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    /* скрыть дракона */
+    #Animal pre{
+        display: none;
+    }
 }
