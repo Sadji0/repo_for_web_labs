@@ -1,8 +1,9 @@
 const Form = function(){
+    // console.log("form");
     this.week = [];
 
     this.settings = {
-        sub: 3,
+        sub: 6,
         days: 5
     };
 
@@ -18,17 +19,20 @@ const Form = function(){
 }
 
 Form.prototype.load = function(){
+    // console.log("load");
     this.settings = JSON.parse(localStorage.getItem('settings')) || this.settings;
 
     this.week = JSON.parse(localStorage.getItem('week')) || this.week;
 };
 
 Form.prototype.save = function(){
+    // console.log("save");
     localStorage.setItem('settings', JSON.stringify(this.settings));
     localStorage.setItem('week', JSON.stringify(this.week));
 };
 
 Form.prototype.getDOM = function(){
+    // console.log("getDom");
     let handler = event => {
         event.preventDefault();
 
@@ -48,6 +52,7 @@ Form.prototype.getDOM = function(){
 };
 
 Form.prototype.initDOM = function(){
+    // console.log("initDom");
     this.DOM.settingsForm.querySelector('select[name="amount-subjects"]').value = this.settings.sub;
     this.DOM.settingsForm.querySelector('select[name="amount-day"]').value = this.settings.days;
 
@@ -81,7 +86,7 @@ Form.prototype.initDOM = function(){
 };
 
 Form.prototype.createActionNode = function(index, content){
-
+    // console.log("createActionNode");
     let action = document.createElement("div");
     action.className = "day-item";
 
@@ -97,6 +102,7 @@ Form.prototype.createActionNode = function(index, content){
 }
 
 Form.prototype.add = function(event){
+    // console.log("add");
     event.preventDefault();
 
     let day = parseInt(event.target.dataset.day);
@@ -118,6 +124,7 @@ Form.prototype.add = function(event){
 };
 
 Form.prototype.checkDisable = function(){
+    // console.log("checkDisable");
     this.week.forEach((weekItem, index) => {
         if(weekItem.length === this.settings.sub){
             this.DOM.week.querySelectorAll('.day')[index].querySelector('input').disabled = true;
@@ -126,5 +133,6 @@ Form.prototype.checkDisable = function(){
 };
 
 window.addEventListener("load", () => {
+    // console.log("addEventListener");
     new Form();
 })
