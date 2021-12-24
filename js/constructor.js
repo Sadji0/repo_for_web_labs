@@ -1,15 +1,14 @@
 const Form = function(){
-    // console.log("form");
-    this.week = [];
+    this.arrDays = [];
 
     this.settings = {
-        sub: 6,
-        days: 5
+        needToDo: 6,
+        countDays: 5
     };
 
     this.DOM = {
-        week: null,
-        settingsForm: null
+        arrDays: null,
+        formSettings: null
     };
 
     this.load();
@@ -18,54 +17,34 @@ const Form = function(){
     this.checkDisable();
 }
 
-Form.prototype.load = function(){
-    // console.log("load");
-    this.settings = JSON.parse(localStorage.getItem('settings')) || this.settings;
-
-    this.week = JSON.parse(localStorage.getItem('week')) || this.week;
-};
-
-Form.prototype.save = function(){
-    // console.log("save");
-    localStorage.setItem('settings', JSON.stringify(this.settings));
-    localStorage.setItem('week', JSON.stringify(this.week));
-};
+window.addEventListener("load", () => {
+    new Form();
+})
 
 Form.prototype.getDOM = function(){
-    // console.log("getDom");
     let handler = event => {
         event.preventDefault();
-
-        this.settings.sub = parseInt(this.DOM.settingsForm.querySelector('select[name="amount-subjects"]').value);
-        this.settings.days = parseInt(this.DOM.settingsForm.querySelector('select[name="amount-day"]').value);
-
-        this.week = new Array(this.settings.days).fill(0).map(_ => []);
-
+        this.settings.needToDo = parseInt(this.DOM.formSettings.querySelector('select[name="amount-subjects"]').value);
+        this.settings.countDays = parseInt(this.DOM.formSettings.querySelector('select[name="amount-day"]').value);
+        this.arrDays = new Array(this.settings.countDays).fill(0).map(_ => []);
         this.save();
         this.initDOM();
     }
-
-    this.DOM.week = document.querySelector(".week");
-
-    this.DOM.settingsForm = document.querySelector("#settings");
-    this.DOM.settingsForm.addEventListener("submit", handler);
+    this.DOM.arrDays = document.querySelector(".week");
+    this.DOM.formSettings = document.querySelector("#settings");
+    this.DOM.formSettings.addEventListener("submit", handler);
 };
 
 Form.prototype.initDOM = function(){
-    // console.log("initDom");
-    this.DOM.settingsForm.querySelector('select[name="amount-subjects"]').value = this.settings.sub;
-    this.DOM.settingsForm.querySelector('select[name="amount-day"]').value = this.settings.days;
-
-    this.DOM.week.innerHTML = "";
-
-    this.week.forEach((dayItem, index) => {
-        let day = document.createElement("div");
-
-        day.className = 'day';
-
-        day.innerHTML = `
+    this.DOM.formSettings.querySelector('select[name="amount-subjects"]').value = this.settings.needToDo;
+    this.DOM.formSettings.querySelector('select[name="amount-day"]').value = this.settings.countDays;
+    this.DOM.arrDays.innerHTML = "";
+    this.arrDays.forEach((dayItem, index) => {
+        let thisDay = document.createElement("div");
+        thisDay.className = 'day';
+        thisDay.innerHTML = `
             <div class="day-name">
-                ${["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"][index]}
+                ${["Пн", "Вт", "Ср", "Чт", "Пт", "Сб"][index]}
             </div>
             <form data-day="${index}">
                 <input placeholder="Текст задания" type="text" name="text">
@@ -74,65 +53,56 @@ Form.prototype.initDOM = function(){
                 
             </div>
         `;
-
         dayItem.forEach((actionItem, index) => {
-            day.querySelector(".day-list").appendChild(this.createActionNode(index, actionItem));
+            thisDay.querySelector(".day-list").appendChild(this.createActionNode(index, actionItem));
         });
-
-        day.querySelector("form").addEventListener("submit", this.add.bind(this));
-
-        this.DOM.week.appendChild(day);
+        thisDay.querySelector("form").addEventListener("submit", this.add.bind(this));
+        this.DOM.arrDays.appendChild(thisDay);
     });
 };
 
 Form.prototype.createActionNode = function(index, content){
-    // console.log("createActionNode");
     let action = document.createElement("div");
     action.className = "day-item";
-
     action.innerHTML = `
         <div class="day-item__index">   </div>
         <div class="day-item__content"></div>
     `;
-
     action.querySelector('.day-item__index').appendChild(document.createTextNode(++index));
     action.querySelector('.day-item__content').appendChild(document.createTextNode(content));
 
     return action;
 }
 
+Form.prototype.load = function(){
+    this.settings = JSON.parse(localStorage.getItem('settings')) || this.settings;
+    this.arrDays = JSON.parse(localStorage.getItem('week')) || this.arrDays;
+};
+
+Form.prototype.save = function(){
+    localStorage.setItem('settings', JSON.stringify(this.settings));
+    localStorage.setItem('week', JSON.stringify(this.arrDays));
+};
+
 Form.prototype.add = function(event){
-    // console.log("add");
     event.preventDefault();
-
-    let day = parseInt(event.target.dataset.day);
+    let thisDay = parseInt(event.target.dataset.day);
     let text = event.target.querySelector("input").value;
-
     if(text.replace(/ /g, '') === ''){
         return;
     }
-
-    this.week[day].push(text);
-
-    this.DOM.week.querySelectorAll('.day')[day].appendChild(this.createActionNode(this.week[day].length - 1, text));
-
+    this.arrDays[thisDay].push(text);
+    this.DOM.arrDays.querySelectorAll('.day')[thisDay].appendChild(this.createActionNode(this.arrDays[thisDay].length - 1, text));
     this.checkDisable();
     this.save();
-
     event.target.querySelector('input').value = "";
     event.target.querySelector('input').blur();
 };
 
 Form.prototype.checkDisable = function(){
-    // console.log("checkDisable");
-    this.week.forEach((weekItem, index) => {
-        if(weekItem.length === this.settings.sub){
-            this.DOM.week.querySelectorAll('.day')[index].querySelector('input').disabled = true;
+    this.arrDays.forEach((weekItem, index) => {
+        if(weekItem.length === this.settings.needToDo){
+            this.DOM.arrDay.querySelectorAll('.day')[index].querySelector('input').disabled = true;
         }
     });
 };
-
-window.addEventListener("load", () => {
-    // console.log("addEventListener");
-    new Form();
-})
