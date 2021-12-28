@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Портфолио Плавко Михаила</title>
-    
+
     <script src="js/time_load.js"></script>
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/nav_change.js"></script>
-    
+    <script src="https://unpkg.com/typeit@8.1.0/dist/index.umd.js"></script>
+
 </head>
+
 <body>
     <header>
         <nav>
             <a href="index.html">Главная</a>
-            <a href="#">Обо мне</a>
-            <a href="#">Резюме</a>
             <a href="constructor.html">Конструктор</a>
             <a href="portfolio.html">Портфолио</a>
-            <a href="#">Контакты</a>
         </nav>
     </header>
     <main>
@@ -55,6 +55,15 @@
             </div>
         </section>
 
+        <span id="myElement" class="myElementC"></span>
+
+        <script>
+            new TypeIt("#myElement", {
+                speed: 200,
+                strings: "Loading... Loading... Loading... Bad... ;(",
+            }).go();
+        </script>
+
         <section class="block_table">
             <div class="table">
                 <div class="table_row">
@@ -63,21 +72,21 @@
                     <div class="table_item">Телефон</div>
                     <div class="table_item">email</div>
                 </div>
-    
+
                 <div class="table_row">
                     <div class="table_item">загрузка...</div>
                     <div class="table_item">загрузка...</div>
                     <div class="table_item">загрузка...</div>
                     <div class="table_item">загрузка...</div>
                 </div>
-    
+
                 <div class="table_row">
                     <div class="table_item">загрузка...</div>
                     <div class="table_item">загрузка...</div>
                     <div class="table_item">загрузка...</div>
                     <div class="table_item">загрузка...</div>
                 </div>
-    
+
                 <div class="table_row">
                     <div class="table_item">загрузка...</div>
                     <div class="table_item">загрузка...</div>
@@ -87,19 +96,11 @@
             </div>
         </section>
 
-        <span id="myElement" class="myElementC"></span>
-        
-        <script src="https://unpkg.com/typeit@8.1.0/dist/index.umd.js"></script>
-        <script>
-            new TypeIt("#myElement", {
-                speed:500,
-                strings: "Loading... Loading... Loading... Bad... ;(",
-            }).go();
-        </script>
     </main>
     <footer>
     </footer>
 </body>
 
 <script src="js/using_data.js"></script>
+
 </html>
