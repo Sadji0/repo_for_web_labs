@@ -50,7 +50,6 @@ Form.prototype.initDOM = function(){
                 <input placeholder="Текст задания" type="text" name="text">
             </form>
             <div class="day-list">
-                
             </div>
         `;
         dayItem.forEach((actionItem, index) => {
