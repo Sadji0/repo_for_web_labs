@@ -43,5 +43,5 @@ function users_table() {
 }
 
 window.addEventListener("load", () => {
-    setTimeout(users_table, 100);
+    setTimeout(users_table, 2000);
 });
